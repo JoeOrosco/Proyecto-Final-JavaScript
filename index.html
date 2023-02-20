@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <title> RecPelis | En recpelis encontraras las mejores peliculas y series.</title>
+    <!-- toastyfi -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">
+            <h1> <span>rec</span>Pelis </h1>
+        </a>
+
+        <nav class="navbar">
+            <a href="#home">inicio</a>
+            <a href="#about">sobre nosotros</a>
+            <a href="#menu">peliculas</a>
+            <a href="#menu-series">series</a>
+            <a href="#login">resgistro</a>
+        </nav>
+
+        <div class="icons">
+            <div class="fas fa-search search-bar" id="search-btn" placeholder="Buscar..."></div>
+
+            <div class="fas fa-video-camera fly-item" id="cart-btn"><span class="item-number">0</span></div>
+            <!-- <div class="fly-item"><span class="item-number">0</span></div> -->
+            <div class="fas fa-bars" id="menu-btn"></div>
+        </div>
+
+
+        <form class="search-form" id="myForm">
+            <input type="search" id="search-box" placeholder="Busque su pelicula o serie...">
+            <label><button href="#peliculas-buscadas" type="submit" for="search-box" class="fas fa-search"
+                    id="search-button"></button></label>
+            <!-- <button type="submit">Buscar</button> -->
+        </form>
+
+
+
+        <div class="cart-items-container" id="contendor-items">
+
+            <div class="items-container">
+
+                <!-- <div class="cart-item">
+                <span class="fas fa-times"></span>
+                <img src="imagenes/daredevil-temporada-2_3840x2160_xtrafondos.com.jpg" alt="">
+                <div class="content">
+                    <h3>cart item 01</h3>
+                    <div class="price">$15.99</div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <span class="fas fa-times"></span>
+                <img src="imagenes/el-mandaloriano-star-wars-studio_3840x2160_xtrafondos.com.jpg" alt="">
+                <div class="content">
+                    <h3>cart item 02</h3>
+                    <div class="price">$15.99</div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <span class="fas fa-times"></span>
+                <img src="imagenes/moon-knight-marvel-series_3840x2160_xtrafondos.com.jpg" alt="">
+                <div class="content">
+                    <h3>cart item 03</h3>
+                    <div class="price">$15.99</div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <span class="fas fa-times"></span>
+                <img src="imagenes/pelicula-the-batman_3840x2160_xtrafondos.com.jpg" alt="">
+                <div class="content">
+                    <h3>cart item 04</h3>
+                    <div class="price">$15.99</div>
+                </div>
+            </div> -->
+            </div>
+            <h3>Total: $ <span class="precio-total">0</span></h3>
+            <button href="#" class="btn btn-confirmar" id="confirmar-items">Confirmar</button>
+
+        </div>
+
+    </header>
+
+    <!-- fin del header -->
+
+    <!-- inicio de la pagina -->
+
+    <section class="home" id="home">
+        <div class="content">
+            <h3>En <span>rec</span>pelis tenemos las mejores peliculas y series</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem perferendis molestias distinctio rem,
+                accusantium eius fugit odio expedita facilis perspiciatis, natus laudantium accusamus. Tempore
+                perspiciatis repellat quas, quis magni harum.</p>
+            <a href="#menu" class="btn">Adquiere uno ahora</a>
+        </div>
+    </section>
+
+    <!-- fin de la seccion de la pagina de incio -->
+
+    <!-- seccion de busqueda de pelicualas -->
+    <section class="detalles-peliculas" id="peliculas-buscadas">
+        <div id="movie-details">
+            <!-- <h2>${pelicula.nombre}</h2>
+            <img src="${pelicula.imagen}" alt="">
+            <p>Precio: $ ${pelicula.precio}</p>
+            <p class="descripcion">Felicidades! podra encontrar la pelicula en la seccion <a href="#menu" class="btn btn-serie btn-agregar">Peliculas <span class="fas fa-video-camera"></span></a> </p> -->
+        </div>
+        <div class="image-container">
+
+        </div>
+    </section>
+
+    <!-- inicio de la seccion sobre nosotros -->
+
+    <section class="about" id="about">
+
+        <h1 class="heading"> <span>sobre</span> nosotros </h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="imagenes/pelicula-the-batman_3840x2160_xtrafondos.com.jpg" alt="">
+            </div>
+
+            <div class="content">
+                <h3>Disfruta de un super entretenimiento</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum expedita perspiciatis soluta ullam
+                    voluptatem hic dignissimos iusto magni blanditiis officiis, voluptatibus minus eum! Vel tenetur
+                    commodi ad, a corrupti quam.</p>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt, atque doloremque. In modi laborum
+                    molestias et tempore necessitatibus?</p>
+                <a href="#menu" class="btn">Ver mas</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- fin seccion sobre nosoros -->
+
+    <!-- inicio de la seccion de peliculas -->
+
+    <section class="menu" id="menu">
+
+        <h1 class="heading"> nuestras <span>peliculas</span> </h1>
+
+        <div class="box-container box-peliculas">
+
+            <!-- <div class="box">
+                <img src="imagenes/avatar-2-el-sentido-del-agua_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>avatar the way of water</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/pantera-negra-pelicula_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>pantera negra</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/pelicula-black-widow_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>black widow</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/pelicula-escuadron-suicida-2021-personajes_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>escuadron suicida</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/pelicula-the-batman_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>the batman</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/pelicula-the-super-mario-bros_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>the super mario bros</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/top-gun-maverick-pelicula_5120x2880_xtrafondos.com.jpg" alt="">
+                <h3>top gun maverick</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/thor-amor-y-trueno-pelicula_5120x2880_xtrafondos.com.jpg" alt="">
+                <h3>thor amor y trueno</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div> -->
+        </div>
+
+    </section>
+
+    <!-- incio de la seccion de series -->
+
+    <section class="menu" id="menu-series">
+
+        <h1 class="heading"> <span> nuestras</span> series </h1>
+
+        <div class="box-container box-series">
+
+            <!-- <div class="box">
+                <img src="imagenes/daredevil-temporada-2_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>daredevil temporada 2</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/el-mandaloriano-star-wars-studio_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>the mandalorian</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/hawkeye-poster-pelicula_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>hawkeye</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/merlina-addams_1920x1080_xtrafondos.com.jpg" alt="">
+                <h3>merlina</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/moon-knight-marvel-series_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>moon knight</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/personajes-de-serie-loki_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>loki</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/rhaenyra-y-tagaryen-la-casa-del-dragon_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>la casa del dragon</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div>
+            <div class="box">
+                <img src="imagenes/serie-obi-wan-kenobi_3840x2160_xtrafondos.com.jpg" alt="">
+                <h3>obi wan kenobi</h3>
+                <div class="price">$15.99</div>
+                <a href="#" class="btn">añadir al carrito</a>
+            </div> -->
+
+        </div>
+    </section>
+
+    <!-- fin seccion de las series -->
+
+    <!-- inico de los contactos -->
+
+    <section class="contact" id="login">
+
+        <h1 class="heading"> registrate <span>ahora</span> </h1>
+
+        <div class="row">
+            <img class="image" src="imagenes/hawkeye-poster-pelicula_3840x2160_xtrafondos.com.jpg" alt="">
+
+            <!-- <form action="">
+                <h3>registro</h3>
+                <div class="inputBox">
+                    <span class="fas fa-user"></span>
+                    <input type="text" placeholder="name
+                    ">
+                </div>
+                <div class="inputBox">
+                    <span class="fas fa-envelope"></span>
+                    <input type="email" placeholder="email
+                    ">
+                </div>
+                <div class="inputBox">
+                    <span class="fas fa-phone"></span>
+                    <input type="number" placeholder="number
+                    ">
+                </div>
+                <input type="submit" value="registrarme" class="btn">
+            </form> -->
+
+            <form action="" id="registroForm">
+                <h3>Registro</h3>
+                <div class="inputBox">
+                    <span class="fas fa-user"></span>
+                    <input type="text" placeholder="Nombre" id="nombreInput">
+                </div>
+                <div class="inputBox">
+                    <span class="fas fa-envelope"></span>
+                    <input type="email" placeholder="Correo electrónico" id="emailInput">
+                </div>
+                <div class="inputBox">
+                    <span class="fas fa-phone"></span>
+                    <input type="number" placeholder="Número de teléfono" id="telefonoInput">
+                </div>
+                <input type="submit" value="Registrarme" class="btn" id="registroBtn">
+            </form>
+
+
+        </div>
+    </section>
+
+    <!-- fin de la seccion de contactos -->
+
+    <!-- inicio del footer -->
+
+    <section class="footer">
+        <div class="share">
+            <a href="#" class="fab fa-facebook"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+            <a href="#" class="fab fa-twitter"></a>
+        </div>
+
+        <div class="links">
+            <a href="#home">inicio</a>
+            <a href="#about">sobre nosotros</a>
+            <a href="#menu">peliculas</a>
+            <a href="#menu-series">series</a>
+            <a href="#login">resgistro</a>
+        </div>
+
+        <div class="credit">creado por recpelis | todos los derechos reservados &#169 <span>recPelis</span></div>
+    </section>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

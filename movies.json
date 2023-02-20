@@ -1,0 +1,58 @@
+
+[
+    {
+        "id": 1,
+        "imagen": "imagenes/avatar-2-el-sentido-del-agua_3840x2160_xtrafondos.com.jpg",
+        "nombre": "avatar 2",
+        "precio": 15.99
+    },
+
+    {
+        "id": 2,
+        "imagen": "imagenes/pantera-negra-pelicula_3840x2160_xtrafondos.com.jpg",
+        "nombre": "pantera negra",
+        "precio": 16.99
+    },
+
+    {
+        "id": 3,
+        "imagen": "imagenes/pelicula-black-widow_3840x2160_xtrafondos.com.jpg",
+        "nombre": "black widow",
+        "precio": 14.99
+    },
+
+    {
+        "id": 4,
+        "imagen": "imagenes/pelicula-escuadron-suicida-2021-personajes_3840x2160_xtrafondos.com.jpg",
+        "nombre": "escuadron suicida",
+        "precio": 18.99
+    },
+
+    {
+        "id": 5,
+        "imagen": "imagenes/pelicula-the-batman_3840x2160_xtrafondos.com.jpg",
+        "nombre": "the batman",
+        "precio": 19.99
+    },
+
+    {
+        "id": 6,
+        "imagen": "imagenes/pelicula-the-super-mario-bros_3840x2160_xtrafondos.com.jpg",
+        "nombre": "super mario bros",
+        "precio": 16.99
+    },
+
+    {
+        "id": 7,
+        "imagen": "imagenes/top-gun-maverick-pelicula_5120x2880_xtrafondos.com.jpg",
+        "nombre": "top gun maverick",
+        "precio": 14.99
+    },
+
+    {
+        "id": 8,
+        "imagen": "imagenes/thor-amor-y-trueno-pelicula_5120x2880_xtrafondos.com.jpg",
+        "nombre": "thor amor y trueno",
+        "precio": 18.99
+    }
+]
