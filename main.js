@@ -128,15 +128,16 @@ seriesContenedor.addEventListener('click', async (e) => {
 // pintando el contenedor de las series y las peliculas.
 const pintarItemCarrito = (item) => {
     console.log(item)
+    const {imagen, nombre, precio} = item
     const contenedorCarrito = document.querySelector('.items-container');
     const div = document.createElement('div');
     div.innerHTML = `
         <div class="cart-item">
             <span class="fas fa-times"></span>
-            <img src="${item.imagen}" alt="">
+            <img src="${imagen}" alt="">
             <div class="content">
-                <h3>${item.nombre}</h3>
-                <div class="price">$${item.precio}</div>
+                <h3>${nombre}</h3>
+                <div class="price">$${precio}</div>
             </div>
         </div>
     `;
@@ -163,9 +164,7 @@ const pintarItemCarrito = (item) => {
     botonEliminar.addEventListener('click', () => {
         // eliminar item del arreglo y del contenedor
         const index = itemsContenedor.indexOf(item)
-        if (index > -1) {
-            itemsContenedor.splice(index, 1)
-        }
+        if (index > -1) itemsContenedor.splice(index, 1)
         contenedorCarrito.removeChild(div)
         actualizarTotalItems()
     })
@@ -182,14 +181,24 @@ function actualizarTotalItems() {
 
 // boton de confirmar
 btnConfirmar.addEventListener('click', () => {
-    Toastify({
-        text: "¡Se agrego con exito las peliculas oh series!",
-        backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
-        className: "alerta",
-        duration: 5000
-    }).showToast();
+    if (itemsContenedor.length !== 0) {
+        Toastify({
+            text: "¡Se agrego con exito las peliculas oh series!",
+            backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+            className: "alerta",
+            duration: 5000
+        }).showToast();
 
-    vaciarCarrito();
+        vaciarCarrito();
+
+    } else {
+        Toastify({
+            text: "¡Su carrito esta vacio!",
+            backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+            className: "alerta",
+            duration: 5000
+        }).showToast();
+    }
 
     // la otra alerta
 });
@@ -234,6 +243,7 @@ const movieDetails = document.getElementById("movie-details");
 searchButton.addEventListener("click", async (e) => {
     const searchTerm = searchBox.value.toLowerCase();
     const peliculas = await obtenerPeliculas();
+    console.log(searchTerm)
     const pelicula = peliculas.find((movie) => movie.nombre.toLowerCase() === searchTerm);
 
     if (pelicula) {
@@ -311,4 +321,3 @@ searchButton.addEventListener("click", async (e) => {
         });
     }
 });
-
