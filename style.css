@@ -46,7 +46,7 @@ section {
     padding: 2rem 7%;
 }
 
-.heading{
+.heading {
     text-align: center;
     color: #fff;
     text-transform: uppercase;
@@ -54,7 +54,7 @@ section {
     font-size: 4rem;
 }
 
-.heading span{
+.heading span {
     color: var(--main-color);
     text-transform: uppercase;
 }
@@ -89,7 +89,7 @@ section {
     z-index: 1000;
 }
 
-.header .logo h1{
+.header .logo h1 {
     color: var(--black);
     font-size: 3rem;
     text-shadow:
@@ -99,7 +99,7 @@ section {
         0 0 40px #fff;
 }
 
-.header .logo span{
+.header .logo span {
     color: #fff;
     text-shadow:
         0 0 5px var(--main-color),
@@ -128,11 +128,11 @@ section {
     position: relative;
 } */
 
-.header .icons .fly-item{
+.header .icons .fly-item {
     position: relative;
 }
 
-.header .icons .item-number{
+.header .icons .item-number {
     position: absolute;
     top: -15px;
     right: -10px;
@@ -150,7 +150,7 @@ section {
     justify-content: center;
 }
 
-.header .icons .item-number:hover{
+.header .icons .item-number:hover {
     border: 1.6px solid var(--main-color);
     color: #fff;
     background-color: var(--bg);
@@ -265,7 +265,7 @@ section {
     font-weight: 999;
 }
 
-.header .cart-items-container h3{
+.header .cart-items-container h3 {
     margin-top: 15px;
     font-size: 2rem;
     color: #fff;
@@ -283,7 +283,7 @@ section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: url(./imagenes/daredevil-temporada-2_3840x2160_xtrafondos.com.jpg) no-repeat;
+    background: url(././imagenes/Comics.png) no-repeat;
     background-size: cover;
     background-position: center center;
 }
@@ -295,7 +295,7 @@ section {
 .home .content h3 {
     font-size: 5rem;
     text-transform: uppercase;
-    color: var(--main-color);
+    color: #fff;
     text-shadow:
         0 0 5px #000,
         0 0 10px #000,
@@ -304,8 +304,8 @@ section {
         0 0 80px #000;
 }
 
-.home .content h3 span{
-    color: #fff;
+.home .content h3 span {
+    color: var(--main-color);
     text-transform: uppercase;
     text-shadow:
         0 0 5px var(--bg),
@@ -320,42 +320,68 @@ section {
     font-weight: lighter;
     line-height: 1.8;
     padding: 1rem 0;
-    color: #eee;
+    color: khaki;
     text-shadow:
-        0 0 5px #000,
-        0 0 10px #000,
-        0 0 20px #000;
+        0 0 5px black,
+        0 0 10px black,
+        0 0 20px black;
+}
+
+.home .content .btn {
+    margin-top: 1rem;
+    border-radius: 15px;
+    display: inline-block;
+    padding: .9rem 3rem;
+    font-size: 1.7rem;
+    color: #fff;
+    background: var(--main-color);
+    cursor: pointer;
+    box-shadow: 0 0 5px black,
+        0 0 10px black,
+        0 0 20px black;
+}
+
+.home .content .btn:hover {
+    color: var(--bg);
 }
 
 /* estilos de la seccion sobre nosotros */
 
-.about .row{
+.about .row {
     display: flex;
     align-items: center;
     background: var(--black);
     flex-wrap: wrap;
+    border-radius: 15px;
+    box-shadow: 0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff;
 }
 
-.about .row .image{
+.about .row .image {
     flex: 1 1 45rem;
 }
 
-.about .row .image img{
+.about .row .image img {
+    border-radius: 15px;
     width: 100%;
 }
 
-.about .row .content{
+.about .row .content {
     text-align: center;
     flex: 1 1 45rem;
     padding: 1rem;
 }
 
-.about .row .content h3{
+.about .row .content h3 {
     font-size: 3rem;
     color: #fff;
+    text-shadow: 0 0 5px var(--main-color),
+        0 0 10px var(--main-color),
+        0 0 20px var(--main-color);
 }
 
-.about .row .content p{
+.about .row .content p {
     font-size: 1.6rem;
     color: #ccc;
     padding: 1rem 0;
@@ -364,51 +390,51 @@ section {
 
 /* estilos de las peliculas */
 
-.menu .box-container{
+.menu .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap: 1.5rem;
 }
 
-.menu .box-container .box{
+.menu .box-container .box {
     padding: 5rem;
     text-align: center;
     border: var(--border);
 }
 
-.menu .box-container .box img{
+.menu .box-container .box img {
     height: 12rem;
 }
 
-.menu .box-container .box h3{
+.menu .box-container .box h3 {
     color: #fff;
     font-size: 2rem;
     padding: 1rem 0;
 }
 
-.menu .box-container .box .price{
+.menu .box-container .box .price {
     color: #fff;
     font-size: 2rem;
     padding: .5rem 0;
 }
 
-.menu .box-container .box .price span{
+.menu .box-container .box .price span {
     color: #fff;
     font-size: 1.5rem;
     text-decoration: line-through;
 }
 
-.menu .box-container .box:hover{
+.menu .box-container .box:hover {
     background: #fff;
 }
 
-.menu .box-container .box:hover > *{
+.menu .box-container .box:hover>* {
     color: var(--black)
 }
 
 /* estilos de los contactos */
 
-.contact .row{
+.contact .row {
     display: flex;
     align-items: center;
     background: var(--black);
@@ -416,25 +442,25 @@ section {
     gap: 1rem;
 }
 
-.contact .row img{
+.contact .row img {
     flex: 1 1 45rem;
     width: 50%;
     object-fit: cover;
 }
 
-.contact .row form{
+.contact .row form {
     flex: 1 1 45rem;
     padding: 5rem 2rem;
     text-align: center;
 }
 
-.contact .row form h3{
+.contact .row form h3 {
     text-transform: uppercase;
     font-size: 3.5rem;
     color: #fff;
 }
 
-.contact .row form .inputBox{
+.contact .row form .inputBox {
     display: flex;
     align-items: center;
     margin-top: 2rem;
@@ -443,13 +469,13 @@ section {
     border: var(--border);
 }
 
-.contact .row form .inputBox span{
+.contact .row form .inputBox span {
     color: #fff;
     font-size: 2rem;
     padding-left: 2rem;
 }
 
-.contact .row form .inputBox input{
+.contact .row form .inputBox input {
     width: 100%;
     padding: 2rem;
     font-size: 1.7rem;
@@ -460,16 +486,16 @@ section {
 
 /* inicio de los estilos del footer */
 
-.footer{
+.footer {
     background: var(--black);
     text-align: center;
 }
 
-.footer .share{
+.footer .share {
     padding: 1rem 0;
 }
 
-.footer .share a{
+.footer .share a {
     height: 5rem;
     width: 5rem;
     line-height: 5rem;
@@ -480,7 +506,7 @@ section {
     border-radius: 50%;
 }
 
-.footer .share a:hover{
+.footer .share a:hover {
     background-color: var(--main-color);
     border: 2px solid #fff;
     color: var(--black);
@@ -490,7 +516,7 @@ section {
         0 0 20px #fff;
 }
 
-.footer .links{
+.footer .links {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -498,53 +524,53 @@ section {
     gap: 1rem;
 }
 
-.footer .links a{
+.footer .links a {
     padding: .7rem 2rem;
     color: #fff;
     border: var(--border);
     font-size: 2rem;
 }
 
-.footer .links a:hover{
+.footer .links a:hover {
     background-color: var(--main-color);
 }
 
-.footer .credit{
+.footer .credit {
     font-size: 2rem;
     color: #fff;
     font-weight: lighter;
     padding: 1.5rem;
 }
 
-.footer .credit span{
+.footer .credit span {
     color: var(--main-color);
 }
 
 /* contenedor de las peliculas y las series*/
 
-.detalles-peliculas{
+.detalles-peliculas {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.detalles-peliculas #movie-details{
+.detalles-peliculas #movie-details {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.detalles-peliculas #movie-details h2{
+.detalles-peliculas #movie-details h2 {
     color: #fff;
     text-align: center;
     font-size: 3.5rem;
     padding: 10px;
 }
 
-.detalles-peliculas #movie-details img{
-    height: 35rem;
+.detalles-peliculas #movie-details img {
+    height: 40rem;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
     border-radius: 10px;
     padding: 10px;
@@ -554,7 +580,7 @@ section {
     align-items: center;
 }
 
-.detalles-peliculas #movie-details p{
+.detalles-peliculas #movie-details p {
     color: var(--main-color);
     font-size: 3rem;
     font-weight: 600;
@@ -562,7 +588,7 @@ section {
     padding: 10px;
 }
 
-.detalles-peliculas #movie-details .descripcion{
+.detalles-peliculas #movie-details .descripcion {
     color: #fff;
     font-size: 2.5rem;
     font-weight: 600;
@@ -618,21 +644,21 @@ section {
         right: 2rem;
     }
 
-    .home{
+    .home {
         background-position: left;
         justify-content: center;
         text-align: center;
     }
 
-    .home .content h3{
+    .home .content h3 {
         font-size: 4.5rem;
     }
 
-    .home .content p{
+    .home .content p {
         font-size: 1.5rem;
     }
 
-    .detalles-peliculas #movie-details img{
+    .detalles-peliculas #movie-details img {
         height: 25rem;
     }
 }
@@ -642,7 +668,7 @@ section {
         font-size: 55%;
     }
 
-    .detalles-peliculas #movie-details img{
+    .detalles-peliculas #movie-details img {
         height: 20rem;
     }
 }
@@ -652,11 +678,11 @@ section {
         font-size: 55%;
     }
 
-    .header .cart-items-containerr{
+    .header .cart-items-containerr {
         width: 35rem;
     }
 
-    .detalles-peliculas #movie-details img{
+    .detalles-peliculas #movie-details img {
         height: 15rem;
     }
 }

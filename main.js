@@ -128,7 +128,11 @@ seriesContenedor.addEventListener('click', async (e) => {
 // pintando el contenedor de las series y las peliculas.
 const pintarItemCarrito = (item) => {
     console.log(item)
-    const {imagen, nombre, precio} = item
+    const {
+        imagen,
+        nombre,
+        precio
+    } = item
     const contenedorCarrito = document.querySelector('.items-container');
     const div = document.createElement('div');
     div.innerHTML = `
@@ -183,7 +187,7 @@ function actualizarTotalItems() {
 btnConfirmar.addEventListener('click', () => {
     if (itemsContenedor.length !== 0) {
         Toastify({
-            text: "¡Se agrego con exito las peliculas oh series!",
+            text: "¡Confirmacion con exito / Peliculas y Series!",
             backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
             className: "alerta",
             duration: 5000
@@ -196,7 +200,11 @@ btnConfirmar.addEventListener('click', () => {
             text: "¡Su carrito esta vacio!",
             backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
             className: "alerta",
-            duration: 5000
+            duration: 5000,
+            offset: {
+                x: 110,
+                y: 10,
+            }
         }).showToast();
     }
 
@@ -217,42 +225,39 @@ function vaciarCarrito() {
 
 const form = document.getElementById('myForm'); // obtenemos el elemento del formulario
 
-form.addEventListener('submit', function (event) { // agregamos un evento de envío al formulario
-    event.preventDefault(); // detenemos el envío predeterminado del formulario
+// prueba nuemero 03 si funiona pintar la busqueda de peliuclas !1!
 
-    const searchTerm = document.getElementById('search-box').value; // obtenemos el valor del campo de búsqueda
-
-    if (searchTerm.trim() === '') { // comprobamos si el término de búsqueda está vacío o solo contiene espacios en blanco
-        Toastify({
-            text: 'Ingrese un término de búsqueda válido.',
-            backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
-            className: 'info',
-            duration: 3000,
-        }).showToast(); // muestra una notificación Toastify
-        return false; // devuelve falso para detener el envío del formulario
-    }
-
-    form.reset(); // reiniciamos el formulario
-});
-
-// resultados de la busqueda de ´peliculas
 const searchButton = document.getElementById("search-button");
 const searchBox = document.getElementById("search-box");
 const movieDetails = document.getElementById("movie-details");
 
-searchButton.addEventListener("click", async (e) => {
+// Esta función busca la película en la lista y la muestra en la página
+async function buscarPelicula() {
     const searchTerm = searchBox.value.toLowerCase();
     const peliculas = await obtenerPeliculas();
-    console.log(searchTerm)
+    const series = await obtenerSeries();
     const pelicula = peliculas.find((movie) => movie.nombre.toLowerCase() === searchTerm);
+    const serie = series.find((show) => show.nombre.toLowerCase() === searchTerm);
 
     if (pelicula) {
         movieDetails.innerHTML = `
-            <h2>${pelicula.nombre}</h2>
-            <img src="${pelicula.imagen}" alt="">
-            <p>Precio: $ ${pelicula.precio}</p>
-            <p class="descripcion">Felicidades! podra encontrar la pelicula en la seccion <a href="#menu" class="btn btn-serie btn-agregar">Peliculas <span class="fas fa-video-camera"></span></a> </p>
+      <h2>${pelicula.nombre}</h2>
+      <img src="${pelicula.imagen}" alt="">
+      <p>Precio: $ ${pelicula.precio}</p>
+      <p class="descripcion">Felicidades! podra encontrar la pelicula en la seccion <a href="#menu" class="btn btn-serie btn-agregar">Peliculas <span class="fas fa-video-camera"></span></a> </p>
+    `;
+
+        // punto de partida
+
+    } else if (serie) {
+
+        movieDetails.innerHTML = `
+            <h2>${serie.nombre}</h2>
+            <img src="${serie.imagen}" alt="">
+            <p>Temporadas: ${serie.temporadas}</p>
+            <p class="descripcion">Felicidades! podra encontrar la serie en la seccion <a href="#menu-series" class="btn btn-serie btn-agregar">Series <span class="fas fa-tv"></span></a> </p>
         `;
+
     } else {
         movieDetails.innerHTML = ""; // Borra todo el contenido previo de movieDetails
         const errorMessage = document.createElement("div"); // Crea un div para el mensaje de error
@@ -279,45 +284,28 @@ searchButton.addEventListener("click", async (e) => {
             behavior: 'smooth'
         });
     }
+
+    if (!pelicula && !serie) {
+        Toastify({
+            text: 'No se encontró ninguna película o serie.',
+            backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+            className: 'info',
+            duration: 1500,
+        }).showToast(); // muestra una notificación Toastify si no se encontró ninguna película
+    }
+}
+
+// -> intendo de poner las series ahora 
+
+
+// Se llama a buscarPelicula cuando se hace clic en el icono de búsqueda
+searchButton.addEventListener("click", (e) => {
+    e.preventDefault(); // Previene la recarga de la página por defecto del formulario
+    buscarPelicula();
 });
 
-// busqueda de las series.
-searchButton.addEventListener("click", async (e) => {
-    const searchTerm = searchBox.value.toLowerCase();
-    const series = await obtenerSeries();
-    const serie = series.find((movie) => movie.nombre.toLowerCase() === searchTerm);
-
-    if (serie) {
-        movieDetails.innerHTML = `
-            <h2>${serie.nombre}</h2>
-            <img src="${serie.imagen}" alt="">
-            <p>Precio: $ ${serie.precio}</p>
-            <p class="descripcion">Felicidades! podra encontrar la serie en la seccion <a href="#menu-series" class="btn btn-serie btn-agregar">Series <span class="fas fa-video-camera"></span></a> </p>
-        `;
-    } else {
-        movieDetails.innerHTML = ""; // Borra todo el contenido previo de movieDetails
-        const errorMessage = document.createElement("div"); // Crea un div para el mensaje de error
-        errorMessage.textContent = "No se encontró ninguna película y serie.";
-        errorMessage.style.color = "white";
-        errorMessage.style.fontSize = "35px";
-        errorMessage.style.display = "flex";
-        errorMessage.style.alignItems = "center";
-        errorMessage.style.minHeight = "45rem";
-
-        const img = document.createElement("img"); // Crea un elemento de imagen
-        img.src = "./imagenes/tristeza-de-intensamente_2560x1440_xtrafondos.com (1).jpg"; // Establece la URL de la imagen que deseas mostrar
-        img.style.width = "170px"; // Establece el ancho de la imagen a 200 píxeles
-        img.style.height = "170px";
-        img.style.border = "1px solid black"; // Establece un borde negro de 1 píxel alrededor de la imagen
-        img.style.margin = "10px";
-
-        errorMessage.appendChild(img); // Agrega la imagen al div
-        movieDetails.appendChild(errorMessage); // Agrega el div al elemento "movieDetails"
-    }
-
-    if (serie || movieDetails.firstChild) {
-        movieDetails.scrollIntoView({
-            behavior: 'smooth'
-        });
-    }
+// Se llama a buscarPelicula cuando se envía el formulario (pulsando Enter en el input)
+document.getElementById("myForm").addEventListener("submit", (e) => {
+    e.preventDefault(); // Previene la recarga de la página por defecto del formulario
+    buscarPelicula();
 });
