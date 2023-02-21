@@ -254,7 +254,7 @@ async function buscarPelicula() {
         movieDetails.innerHTML = `
             <h2>${serie.nombre}</h2>
             <img src="${serie.imagen}" alt="">
-            <p>Temporadas: ${serie.temporadas}</p>
+            <p>Precio: ${serie.precio}</p>
             <p class="descripcion">Felicidades! podra encontrar la serie en la seccion <a href="#menu-series" class="btn btn-serie btn-agregar">Series <span class="fas fa-tv"></span></a> </p>
         `;
 
