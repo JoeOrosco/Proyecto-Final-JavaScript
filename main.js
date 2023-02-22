@@ -1,4 +1,3 @@
-
 // Inicio del controlador de eventos en la barra de navegación.
 const navbar = document.querySelector('.navbar')
 
@@ -161,6 +160,9 @@ const pintarItemCarrito = async (item) => {
         text: "¡Se agregó con éxito!",
         style: {
             background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+            fontSize: "1.3rem",
+            borderRadius: "10px",
+            textAlign: "center"
         },
         className: "alerta",
         duration: 2000,
@@ -201,6 +203,9 @@ btnConfirmar.addEventListener('click', () => {
             text: "¡Confirmacion exitosa / Gracias por su compra!",
             style: {
                 background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+                fontSize: "1.3rem",
+                borderRadius: "10px",
+                textAlign: "center"
             },
             className: "alerta",
             duration: 4000
@@ -213,6 +218,9 @@ btnConfirmar.addEventListener('click', () => {
             text: "¡Su carrito esta vacio!",
             style: {
                 background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+                fontSize: "1.3rem",
+                borderRadius: "10px",
+                textAlign: "center"
             },
             className: "alerta",
             duration: 2000,
@@ -262,7 +270,7 @@ async function buscarPelicula() {
             <p>Precio: ${serie.precio}</p>
             <p class="descripcion">Felicidades! podra encontrar la serie en la seccion <a href="#menu-series" class="btn btn-serie btn-agregar">Series <span class="fas fa-tv"></span></a> </p>
         `
-    // Muestra un mensaje en la pagina que no se encontro la serie/pelicula.
+        // Muestra un mensaje en la pagina que no se encontro la serie/pelicula.
     } else {
         movieDetails.innerHTML = ""
         const errorMessage = document.createElement("div")
@@ -295,9 +303,12 @@ async function buscarPelicula() {
     // Muestra una alerta que no se encontro pelicula/serie.
     if (!pelicula && !serie) {
         Toastify({
-            text: 'No se encontró ninguna película o serie.',
-            style:{
+            text: 'No se encontró ninguna película y serie.',
+            style: {
                 background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+                fontSize: "1.3rem",
+                borderRadius: "10px",
+                textAlign: "center"
             },
             className: 'info',
             duration: 1500,
@@ -315,4 +326,54 @@ searchButton.addEventListener("click", (e) => {
 document.getElementById("myForm").addEventListener("submit", (e) => {
     e.preventDefault()
     buscarPelicula()
+})
+
+// Selecciono los elementos HTML del formulario.
+const registroForm = document.querySelector('#registroForm');
+const nombreInput = document.querySelector('#nombre-input');
+const emailInput = document.querySelector('#email-input');
+const telefonoInput = document.querySelector('#telefono-input');
+const registroBtn = document.querySelector('#registroBtn');
+
+// El evento para el formulario al momento de enviar.
+registroForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    // Obtener los valores de entrada del usuario.
+    const nombre = nombreInput.value
+    const telefono = telefonoInput.value
+    const email = emailInput.value
+
+    // Validar los campos de entrada del usuario
+    if (nombre.trim() === '' || telefono.trim() === '' || email.trim() === '') {
+        // Mostrar una alerta de toastify
+        Toastify({
+            text: 'Por favor complete todos los campos',
+            style: {
+                background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+                fontSize: "1.3rem",
+                borderRadius: "10px",
+                textAlign: "center"
+            },
+        }).showToast()
+
+        return // Detener la ejecución de la función
+    }
+
+    // Mostrar una alerta de toastify con los detalles del usuario
+    Toastify({
+        text: `Gracias ${nombre} su registro se ha completado con éxito. Nos contactaremos pronto con Teléfono: ${telefono}`,
+        duration: 7000,
+        style: {
+            background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+            fontSize: "1.5rem",
+            borderRadius: "10px",
+            textAlign: "center"
+        },
+    }).showToast()
+
+    // Limpiar los campos del formulario
+    nombreInput.value = ''
+    telefonoInput.value = ''
+    emailInput.value = ''
 })

@@ -486,7 +486,7 @@ section {
     align-items: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    background: var(--bg);
+    background-color: var(--bg);
     border: var(--border);
 }
 
@@ -502,7 +502,8 @@ section {
     font-size: 1.7rem;
     color: #fff;
     text-transform: none;
-    background: none;
+    background-color: var(--bg);
+    margin-left: 2rem;
 }
 
 /* inicio de los estilos del footer */
