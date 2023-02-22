@@ -1,6 +1,5 @@
-/*
-    Detalles de el buscador, el carrito y el navbar.
-*/
+
+// Inicio del controlador de eventos en la barra de navegación.
 const navbar = document.querySelector('.navbar')
 
 document.querySelector('#menu-btn').onclick = () => {
@@ -30,23 +29,19 @@ window.onscroll = () => {
     searchForm.classList.remove('active')
     cartItem.classList.remove('active')
 }
+// Fin del controlador de eventos de la barra de navegación.
 
-// fin de los detalles
-
-// inicio...
-
+// Seleccionando varios elementos del DOM.
 const peliculasContenedor = document.querySelector('.box-peliculas')
 const seriesContenedor = document.querySelector('.box-series')
 const itemNumero = document.querySelector('.item-number')
 const precioTotal = document.querySelector('.precio-total')
 const btnConfirmar = document.querySelector('.btn-confirmar');
-
 let itemsContenedor = []
-// console.log(itemsContenedor)
 
-// inicio donde pintamos las series y las peliculas
+// Inicio donde se pinta las peliculas del json -> peliculas.json
 async function obtenerPeliculas() {
-    const response = await fetch(`./movies.json`)
+    const response = await fetch(`./peliculas.json`)
     const data = await response.json()
     return data
 }
@@ -69,7 +64,9 @@ async function pintarPeliculas() {
 }
 
 pintarPeliculas()
+// Fin donde se pinta las peliculas del json -> peliculas.json
 
+// Inicio donde se pinta las series del json -> series.json
 async function obtenerSeries() {
     const response = await fetch(`./series.json`)
     const data = await response.json()
@@ -93,93 +90,33 @@ async function pintarSeries() {
 }
 
 pintarSeries()
+// Fin donde se pinta las series del json -> series.json
 
-// fin de pintar las series y las peliculas.
-
-// las delegaciones de pintar las series y las peliclas
-
-// peliculas
+// Delegación del evento para pintar las peliculas.
 peliculasContenedor.addEventListener('click', async (e) => {
     if (e.target.classList.contains('btn-pelicula')) {
         const id = e.target.id;
-        console.log(id)
+        // console.log(id)
         const peliculas = await obtenerPeliculas()
         const pelicula = peliculas.find((movie) => movie.id == id)
         pintarItemCarrito(pelicula);
-        // itemsContenedor.push(pelicula)
     }
 })
 
 
-// series
+// Delegación del evento para pintar las series.
 seriesContenedor.addEventListener('click', async (e) => {
     if (e.target.classList.contains('btn-serie')) {
         const id = e.target.id;
-        console.log(id)
+        // console.log(id)
         const series = await obtenerSeries()
         const serie = series.find((movie) => movie.id == id)
         pintarItemCarrito(serie)
-        // itemsContenedor.push(serie)
     }
-});
+})
+// fin de las delegaciones de las peliculas y las series.
 
-// fin de las delegaciones
-
-// pintando el contenedor de las series y las peliculas.
-// const pintarItemCarrito = (item) => {
-//     console.log(item)
-//     const {
-//         imagen,
-//         nombre,
-//         precio,
-//         cantidad
-//     } = item
-//     const contenedorCarrito = document.querySelector('.items-container');
-//     const div = document.createElement('div');
-//     div.innerHTML = `
-//         <div class="cart-item">
-//             <span class="fas fa-times"></span>
-//             <img src="${imagen}" alt="">
-//             <div class="content">
-//                 <h3>${nombre}</h3>
-//                 <div class="price">$${precio}</div>
-//                 <p>Cantidad: <span>${cantidad}</span> </p>
-//             </div>
-//         </div>
-//     `;
-
-//     itemsContenedor.push(item)
-//     // console.log(itemsContenedor)
-//     contenedorCarrito.appendChild(div)
-//     actualizarTotalItems()
-
-//     // colocarl la alerta
-//     Toastify({
-//         text: "¡Se agrego con exito!",
-//         backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
-//         className: "alerta",
-//         duration: 2000,
-//         offset: {
-//             x: 110,
-//             y: 10,
-//         }
-//     }).showToast();
-
-//     // agregue un evento para el boton eliminar
-//     const botonEliminar = div.querySelector('.fa-times')
-//     botonEliminar.addEventListener('click', () => {
-//         // eliminar item del arreglo y del contenedor
-//         const index = itemsContenedor.indexOf(item)
-//         if (index > -1) itemsContenedor.splice(index, 1)
-//         contenedorCarrito.removeChild(div)
-//         actualizarTotalItems()
-//     })
-
-// }
-//fin de pintar las series y las peliculas.
-
-// -> prueba de pintar las series y las peliculas con la cantidad y el eliminar
-
+// Funcion donde se pinta las series y peliculas.
 const pintarItemCarrito = async (item) => {
     const {
         imagen,
@@ -200,7 +137,7 @@ const pintarItemCarrito = async (item) => {
                 <p>Cantidad: <span class="cantidad-${id}">${cantidad}</span> </p>
             </div>
         </div>
-    `;
+    `
 
     const existe = itemsContenedor.some((item) => item.id == id)
 
@@ -218,24 +155,24 @@ const pintarItemCarrito = async (item) => {
         actualizarTotalItems()
 
     }
-    // console.log(itemsContenedor)
 
-    // colocar la alerta
+    // Se incluye la alerta de Toastify.
     Toastify({
         text: "¡Se agregó con éxito!",
-        backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+        style: {
+            background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+        },
         className: "alerta",
         duration: 2000,
         offset: {
             x: 110,
             y: 10,
         }
-    }).showToast();
+    }).showToast()
 
-    // agregar evento para el botón eliminar
+    // agrego evento para el botón eliminar.
     const botonEliminar = div.querySelector('.fa-times')
     botonEliminar.addEventListener('click', () => {
-        // eliminar item del arreglo y del contenedor
         if (item.cantidad == 1) {
             const index = itemsContenedor.indexOf(item)
             if (index > -1) itemsContenedor.splice(index, 1)
@@ -248,137 +185,134 @@ const pintarItemCarrito = async (item) => {
             actualizarTotalItems()
         }
     })
-    // agregar evento para el botón añadir 
 }
+// Fin de la funcion donde se pinta las series y las peliculas.
 
+// Funcion donde se actializa el precio total con la cantidad de series y pelicculas
 function actualizarTotalItems() {
     itemNumero.textContent = itemsContenedor.length
-    precioTotal.innerText = itemsContenedor.reduce((acc, item) => acc + item.precio * item.cantidad, 0).toFixed(2);
+    precioTotal.innerText = itemsContenedor.reduce((acc, item) => acc + item.precio * item.cantidad, 0).toFixed(2)
 }
 
-// boton de confirmar
+// El evento del boton de Confirmar las peliculas y las series.
 btnConfirmar.addEventListener('click', () => {
     if (itemsContenedor.length !== 0) {
         Toastify({
-            text: "¡Confirmacion con exito / Peliculas y Series!",
-            backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+            text: "¡Confirmacion exitosa / Gracias por su compra!",
+            style: {
+                background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+            },
             className: "alerta",
-            duration: 5000
-        }).showToast();
+            duration: 4000
+        }).showToast()
 
-        vaciarCarrito();
+        vaciarCarrito()
 
     } else {
         Toastify({
             text: "¡Su carrito esta vacio!",
-            backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+            style: {
+                background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+            },
             className: "alerta",
             duration: 2000,
             offset: {
                 x: 110,
                 y: 10,
             }
-        }).showToast();
+        }).showToast()
     }
+})
+// Fin del evento del boton confirmar.
 
-    // la otra alerta
-});
-
-// vaciar el carrito al darle al boton de confirmar.
+// Funcion donde se vacia ela carrito al darle click en confirmar.
 function vaciarCarrito() {
-    itemsContenedor = [];
-    const contenedorCarrito = document.querySelector('.items-container');
-    contenedorCarrito.innerHTML = '';
-    actualizarTotalItems();
+    itemsContenedor = []
+    const contenedorCarrito = document.querySelector('.items-container')
+    contenedorCarrito.innerHTML = ''
+    actualizarTotalItems()
 }
 
-// fin del boton confirmar
+// Inicio de la funcionalidad de la busqueda de las peliculas y las series.
+const form = document.getElementById('myForm')
+const searchButton = document.getElementById("search-button")
+const searchBox = document.getElementById("search-box")
+const movieDetails = document.getElementById("movie-details")
 
-// busqueda el input de la busqueda si no se pone nada saldra la alerta de toastify.
-
-const form = document.getElementById('myForm'); // obtenemos el elemento del formulario
-
-// prueba nuemero 03 si funiona pintar la busqueda de peliuclas !1!
-
-const searchButton = document.getElementById("search-button");
-const searchBox = document.getElementById("search-box");
-const movieDetails = document.getElementById("movie-details");
-
-// Esta función busca la película en la lista y la muestra en la página
+// Esta función busca la película/serie y la muestra en la página.
 async function buscarPelicula() {
-    const searchTerm = searchBox.value.toLowerCase();
-    const peliculas = await obtenerPeliculas();
-    const series = await obtenerSeries();
-    const pelicula = peliculas.find((movie) => movie.nombre.toLowerCase() === searchTerm);
-    const serie = series.find((show) => show.nombre.toLowerCase() === searchTerm);
+    const searchTerm = searchBox.value.toLowerCase()
+    const peliculas = await obtenerPeliculas()
+    const series = await obtenerSeries()
+    const pelicula = peliculas.find((movie) => movie.nombre.toLowerCase() === searchTerm)
+    const serie = series.find((show) => show.nombre.toLowerCase() === searchTerm)
 
     if (pelicula) {
         movieDetails.innerHTML = `
-      <h2>${pelicula.nombre}</h2>
-      <img src="${pelicula.imagen}" alt="">
-      <p>Precio: $ ${pelicula.precio}</p>
-      <p class="descripcion">Felicidades! podra encontrar la pelicula en la seccion <a href="#menu" class="btn btn-serie btn-agregar">Peliculas <span class="fas fa-video-camera"></span></a> </p>
-    `;
-
-        // punto de partida
+            <h2>${pelicula.nombre}</h2>
+            <img src="${pelicula.imagen}" alt="">
+            <p>Precio: $ ${pelicula.precio}</p>
+            <p class="descripcion">Felicidades! podra encontrar la pelicula en la seccion <a href="#menu" class="btn btn-serie btn-agregar">Peliculas <span class="fas fa-video-camera"></span></a> </p>
+        `
 
     } else if (serie) {
-
         movieDetails.innerHTML = `
             <h2>${serie.nombre}</h2>
             <img src="${serie.imagen}" alt="">
             <p>Precio: ${serie.precio}</p>
             <p class="descripcion">Felicidades! podra encontrar la serie en la seccion <a href="#menu-series" class="btn btn-serie btn-agregar">Series <span class="fas fa-tv"></span></a> </p>
-        `;
-
+        `
+    // Muestra un mensaje en la pagina que no se encontro la serie/pelicula.
     } else {
-        movieDetails.innerHTML = ""; // Borra todo el contenido previo de movieDetails
-        const errorMessage = document.createElement("div"); // Crea un div para el mensaje de error
-        errorMessage.textContent = "No se encontró ninguna película y serie.";
-        errorMessage.style.color = "white";
-        errorMessage.style.fontSize = "35px";
-        errorMessage.style.display = "flex";
-        errorMessage.style.alignItems = "center";
-        errorMessage.style.minHeight = "45rem";
+        movieDetails.innerHTML = ""
+        const errorMessage = document.createElement("div")
+        errorMessage.textContent = "No se encontró ninguna película y serie."
+        errorMessage.style.color = "white"
+        errorMessage.style.fontSize = "35px"
+        errorMessage.style.display = "flex"
+        errorMessage.style.alignItems = "center"
+        errorMessage.style.minHeight = "45rem"
 
-        const img = document.createElement("img"); // Crea un elemento de imagen
-        img.src = "./imagenes/tristeza-de-intensamente_2560x1440_xtrafondos.com (1).jpg"; // Establece la URL de la imagen que deseas mostrar
-        img.style.width = "170px"; // Establece el ancho de la imagen a 200 píxeles
-        img.style.height = "170px";
-        img.style.border = "1px solid black"; // Establece un borde negro de 1 píxel alrededor de la imagen
-        img.style.margin = "10px";
+        // Le puse una imagen donde le doy algunos estilos.
+        const img = document.createElement("img")
+        img.src = "./imagenes/tristeza-de-intensamente_2560x1440_xtrafondos.com (1).jpg"
+        img.style.width = "170px"
+        img.style.height = "170px"
+        img.style.border = "1px solid black"
+        img.style.margin = "10px"
 
-        errorMessage.appendChild(img); // Agrega la imagen al div
-        movieDetails.appendChild(errorMessage); // Agrega el div al elemento "movieDetails"
+        errorMessage.appendChild(img)
+        movieDetails.appendChild(errorMessage)
     }
 
+    // En este codigo hace que la ventana del navegador se desplace hacia la variable movieDetails.
     if (pelicula || movieDetails.firstChild) {
         movieDetails.scrollIntoView({
             behavior: 'smooth'
-        });
+        })
     }
 
+    // Muestra una alerta que no se encontro pelicula/serie.
     if (!pelicula && !serie) {
         Toastify({
             text: 'No se encontró ninguna película o serie.',
-            backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+            style:{
+                background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+            },
             className: 'info',
             duration: 1500,
-        }).showToast(); // muestra una notificación Toastify si no se encontró ninguna película
+        }).showToast()
     }
 }
 
-// -> intendo de poner las series ahora 
-
-
-// Se llama a buscarPelicula cuando se hace clic en el icono de búsqueda
+// Se llama a buscarPelicula cuando se hace click en el icono de búsqueda.
 searchButton.addEventListener("click", (e) => {
-    e.preventDefault(); // Previene la recarga de la página por defecto del formulario
-    buscarPelicula();
-});
+    e.preventDefault()
+    buscarPelicula()
+})
 
 // Se llama a buscarPelicula cuando se envía el formulario (pulsando Enter en el input)
 document.getElementById("myForm").addEventListener("submit", (e) => {
-    e.preventDefault(); // Previene la recarga de la página por defecto del formulario
-    buscarPelicula();
-});
+    e.preventDefault()
+    buscarPelicula()
+})
