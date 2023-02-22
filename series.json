@@ -1,59 +1,73 @@
 [
     {
-        "id": 1,
+        "id": 9,
         "imagen": "imagenes/rhaenyra-y-tagaryen-la-casa-del-dragon_3840x2160_xtrafondos.com.jpg",
         "nombre": "la casa del dragon",
-        "precio": 15.99
+        "precio": 15.99,
+        "cantidad": 1,
+        "tipo": "serie"
     },
 
     {
-        "id": 2,
+        "id": 10,
         "imagen": "imagenes/serie-obi-wan-kenobi_3840x2160_xtrafondos.com.jpg",
         "nombre": "obi wan kenobi",
-        "precio": 16.99
+        "precio": 16.99,
+        "cantidad": 1,
+        "tipo": "serie"
     },
 
     {
-        "id": 3,
+        "id": 11,
         "imagen": "imagenes/daredevil-temporada-2_3840x2160_xtrafondos.com.jpg",
         "nombre": "daredevil temp 2",
-        "precio": 18.99
+        "precio": 18.99,
+        "cantidad": 1,
+        "tipo": "serie"
     },
 
     {
-        "id": 4,
+        "id": 12,
         "imagen": "imagenes/el-mandaloriano-star-wars-studio_3840x2160_xtrafondos.com.jpg",
         "nombre": "the mandalorian",
-        "precio": 21.99
+        "precio": 21.99,
+        "cantidad": 1,
+        "tipo": "serie"
     },
 
     {
-        "id": 5,
+        "id": 13,
         "imagen": "imagenes/hawkeye-poster-pelicula_3840x2160_xtrafondos.com.jpg",
         "nombre": "hawkeye",
-        "precio": 16.99
+        "precio": 16.99,
+        "cantidad": 1,
+        "tipo": "serie"
     },
 
     {
-        "id": 6,
+        "id": 14,
         "imagen": "imagenes/merlina-addams_1920x1080_xtrafondos.com.jpg",
         "nombre": "merlina",
-        "precio": 18.99
+        "precio": 18.99,
+        "cantidad": 1,
+        "tipo": "serie"
     },
 
     {
-        "id": 7,
+        "id": 15,
         "imagen": "imagenes/moon-knight-marvel-series_3840x2160_xtrafondos.com.jpg",
         "nombre": "moon knight",
-        "precio": 14.99
+        "precio": 14.99,
+        "cantidad": 1,
+        "tipo": "serie"
     },
 
     {
-        "id": 8,
+        "id": 16,
         "imagen": "imagenes/personajes-de-serie-loki_3840x2160_xtrafondos.com.jpg",
         "nombre": "loki",
-        "precio": 18.99
+        "precio": 18.99,
+        "cantidad": 1,
+        "tipo": "serie"
     }
-
-    
 ]

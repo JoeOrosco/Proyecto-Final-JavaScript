@@ -186,7 +186,6 @@ section {
 
 .header .search-form.active {
     transform: scaleY(1);
-
 }
 
 .header .search-form input {
@@ -203,6 +202,16 @@ section {
     font-size: 2.2rem;
     margin-right: 1.5rem;
     color: var(--black)
+}
+
+.header .search-form label button {
+    cursor: pointer;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.header .search-form label button:hover{
+    color: var(--main-color);
 }
 
 .header .search-form label:hover {
@@ -260,8 +269,20 @@ section {
 }
 
 .header .cart-items-container .cart-item .content .price {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: var(--main-color);
+    font-weight: 999;
+}
+
+.header .cart-items-container .cart-item .content p{
+    color: #fff;
+    font-size: 1.7rem;
+    margin-left: 100px;
+}
+
+.header .cart-items-container .cart-item .content p span{
+    color: var(--main-color);
+    font-size: 1.7rem;
     font-weight: 999;
 }
 
@@ -671,11 +692,32 @@ section {
     .detalles-peliculas #movie-details img {
         height: 20rem;
     }
+
+    .home .content h3{
+        margin-top: 20px;
+    }
 }
 
 @media (max-width: 360px) {
     html {
         font-size: 55%;
+    }
+
+    .home {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: url(././imagenes/Comics.png) no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    
+    .home .content {
+        max-width: 60rem;
+    }
+
+    .home .content h3{
+        margin-top: 15px;
     }
 
     .header .cart-items-containerr {

@@ -126,12 +126,67 @@ seriesContenedor.addEventListener('click', async (e) => {
 // fin de las delegaciones
 
 // pintando el contenedor de las series y las peliculas.
-const pintarItemCarrito = (item) => {
-    console.log(item)
+// const pintarItemCarrito = (item) => {
+//     console.log(item)
+//     const {
+//         imagen,
+//         nombre,
+//         precio,
+//         cantidad
+//     } = item
+//     const contenedorCarrito = document.querySelector('.items-container');
+//     const div = document.createElement('div');
+//     div.innerHTML = `
+//         <div class="cart-item">
+//             <span class="fas fa-times"></span>
+//             <img src="${imagen}" alt="">
+//             <div class="content">
+//                 <h3>${nombre}</h3>
+//                 <div class="price">$${precio}</div>
+//                 <p>Cantidad: <span>${cantidad}</span> </p>
+//             </div>
+//         </div>
+//     `;
+
+//     itemsContenedor.push(item)
+//     // console.log(itemsContenedor)
+//     contenedorCarrito.appendChild(div)
+//     actualizarTotalItems()
+
+//     // colocarl la alerta
+//     Toastify({
+//         text: "¡Se agrego con exito!",
+//         backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+//         className: "alerta",
+//         duration: 2000,
+//         offset: {
+//             x: 110,
+//             y: 10,
+//         }
+//     }).showToast();
+
+//     // agregue un evento para el boton eliminar
+//     const botonEliminar = div.querySelector('.fa-times')
+//     botonEliminar.addEventListener('click', () => {
+//         // eliminar item del arreglo y del contenedor
+//         const index = itemsContenedor.indexOf(item)
+//         if (index > -1) itemsContenedor.splice(index, 1)
+//         contenedorCarrito.removeChild(div)
+//         actualizarTotalItems()
+//     })
+
+// }
+//fin de pintar las series y las peliculas.
+
+// -> prueba de pintar las series y las peliculas con la cantidad y el eliminar
+
+const pintarItemCarrito = async (item) => {
     const {
         imagen,
         nombre,
-        precio
+        precio,
+        cantidad,
+        id
     } = item
     const contenedorCarrito = document.querySelector('.items-container');
     const div = document.createElement('div');
@@ -142,18 +197,32 @@ const pintarItemCarrito = (item) => {
             <div class="content">
                 <h3>${nombre}</h3>
                 <div class="price">$${precio}</div>
+                <p>Cantidad: <span class="cantidad-${id}">${cantidad}</span> </p>
             </div>
         </div>
     `;
 
-    itemsContenedor.push(item)
-    // console.log(itemsContenedor)
-    contenedorCarrito.appendChild(div)
-    actualizarTotalItems()
+    const existe = itemsContenedor.some((item) => item.id == id)
 
-    // colocarl la alerta
+    if (existe) {
+        // console.log("pelicula")
+        const item = itemsContenedor.find((item) => item.id == id)
+        item.cantidad++
+        const cantidad = document.querySelector(`.cantidad-${item.id}`)
+        cantidad.innerText = item.cantidad
+        actualizarTotalItems()
+
+    } else {
+        itemsContenedor.push(item)
+        contenedorCarrito.appendChild(div)
+        actualizarTotalItems()
+
+    }
+    // console.log(itemsContenedor)
+
+    // colocar la alerta
     Toastify({
-        text: "¡Se agrego con exito!",
+        text: "¡Se agregó con éxito!",
         backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
         className: "alerta",
         duration: 2000,
@@ -163,24 +232,28 @@ const pintarItemCarrito = (item) => {
         }
     }).showToast();
 
-    // agregue un evento para el boton eliminar
+    // agregar evento para el botón eliminar
     const botonEliminar = div.querySelector('.fa-times')
     botonEliminar.addEventListener('click', () => {
         // eliminar item del arreglo y del contenedor
-        const index = itemsContenedor.indexOf(item)
-        if (index > -1) itemsContenedor.splice(index, 1)
-        contenedorCarrito.removeChild(div)
-        actualizarTotalItems()
+        if (item.cantidad == 1) {
+            const index = itemsContenedor.indexOf(item)
+            if (index > -1) itemsContenedor.splice(index, 1)
+            contenedorCarrito.removeChild(div)
+            actualizarTotalItems()
+        } else {
+            item.cantidad--
+            const cantidad = document.querySelector(`.cantidad-${item.id}`)
+            cantidad.innerText = item.cantidad
+            actualizarTotalItems()
+        }
     })
-
+    // agregar evento para el botón añadir 
 }
-//fin de pintar las series y las peliculas.
-
-// aumentando la cantidad en el itemsContenedor.
 
 function actualizarTotalItems() {
     itemNumero.textContent = itemsContenedor.length
-    precioTotal.innerText = itemsContenedor.reduce((acc, item) => acc + item.precio, 0).toFixed(2);
+    precioTotal.innerText = itemsContenedor.reduce((acc, item) => acc + item.precio * item.cantidad, 0).toFixed(2);
 }
 
 // boton de confirmar
@@ -200,7 +273,7 @@ btnConfirmar.addEventListener('click', () => {
             text: "¡Su carrito esta vacio!",
             backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
             className: "alerta",
-            duration: 5000,
+            duration: 2000,
             offset: {
                 x: 110,
                 y: 10,
